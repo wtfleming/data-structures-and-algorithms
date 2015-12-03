@@ -5,7 +5,7 @@ Data structures and algorithms in C++ for learning.
 
 This code should not be used in a production, for simplicity I am not using templates for the data structures, and there is a relatively large amount of undefined behavior (ie. removing an element from an empty list).
 
-# Install Instructions
+## Install Dependencies
 
 Instructions tested on Ubuntu 14.04
 
@@ -49,7 +49,7 @@ cmake ..
 make
 ```
 
-# Build the project
+## Build the project
 
 ```
 $ mkdir build
@@ -58,7 +58,7 @@ $ cmake ..
 $ make
 ```
 
-## Run the Unit tests:
+### Run the Unit tests:
 
 ```
 $ ./test
