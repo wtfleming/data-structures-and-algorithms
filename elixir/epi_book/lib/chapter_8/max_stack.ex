@@ -1,5 +1,6 @@
 defmodule Chapter8.MaxStack do
   defstruct head: []
+  @type t :: %Chapter8.MaxStack{head: [{integer, integer}]}
 
   @moduledoc """
   Stack that supports max() as an O(1) operation to determine the largest element on the stack
@@ -8,11 +9,13 @@ defmodule Chapter8.MaxStack do
   @doc """
   Construct a empty MaxStack
   """
+  @spec new() :: Chapter8.MaxStack.t
   def new(), do: %Chapter8.MaxStack{}
 
   @doc """
   Add an element to the stack
   """
+  @spec push(Chapter8.MaxStack.t, integer) :: Chapter8.MaxStack.t
   def push(stack, val) do
     if stack.head == [] do
       %Chapter8.MaxStack{head: [{val, val}]}
@@ -29,6 +32,7 @@ defmodule Chapter8.MaxStack do
   @doc """
   Remove an element from the stack
   """
+  @spec pop(t) :: {Chapter8.MaxStack.t, integer}
   def pop(stack) do
     if stack.head == [] do
       {%Chapter8.MaxStack{head: []}, nil}
@@ -42,6 +46,7 @@ defmodule Chapter8.MaxStack do
   @doc """
   Return the first element in the stack
   """
+  @spec peek(Chapter8.MaxStack.t) :: integer
   def peek(stack) do
     case List.first(stack.head) do
       nil ->
@@ -54,6 +59,7 @@ defmodule Chapter8.MaxStack do
   @doc """
   Return the maximum element in the stack
   """
+  @spec max(Chapter8.MaxStack.t) :: integer
   def max(stack) do
     case List.first(stack.head) do
       nil ->
