@@ -3,7 +3,7 @@ defmodule Chapter9.BinarySearchTree do
   alias Chapter9.BinarySearchTree, as: BST
   @type t :: %BST{value: number, left: BST.t, right: BST.t} | :empty_node
 
-
+  
   @spec new() :: :empty_node
   def new(), do: :empty_node
 
@@ -42,13 +42,22 @@ defmodule Chapter9.BinarySearchTree do
   def in_order_traversal(tree), do: _in_order_traversal(tree, [])
 
   @spec _in_order_traversal(BST.t, [number]) :: [number]
-  defp _in_order_traversal(:empty_node, acc), do: []
+  defp _in_order_traversal(:empty_node, _), do: []
   defp _in_order_traversal(%BST{value: value, left: left, right: right}, acc) do
     l = _in_order_traversal(left, acc)
     r = _in_order_traversal(right, acc)
     l ++ [value] ++ r
   end
 
+  @spec min(BST.t) :: number | nil
+  def min(:empty_node), do: nil
+  def min(%BST{value: value, left: :empty_node}), do: value
+  def min(%BST{left: left}), do: min(left)
+
+  @spec max(BST.t) :: number | nil
+  def max(:empty_node), do: nil
+  def max(%BST{value: value, right: :empty_node}), do: value
+  def max(%BST{right: right}), do: max(right)
 
 end
 

@@ -59,4 +59,33 @@ defmodule Chapter9.BinarySearchTreeTest do
     assert BST.in_order_traversal(tree) == [1, 5, 6, 11, 15, 23, 24, 25]
   end
 
+
+  test "min" do
+    assert BST.min(BST.new) == nil
+
+    tree = BST.new
+    |> BST.insert(15)
+    |> BST.insert(5)
+    |> BST.insert(25)
+    |> BST.insert(6)
+    |> BST.insert(1)
+    |> BST.insert(24)
+    |> BST.insert(23)
+    assert BST.min(tree) == 1
+  end
+
+  test "max" do
+    assert BST.min(BST.new) == nil
+
+    tree = BST.new
+    |> BST.insert(15)
+    |> BST.insert(5)
+    |> BST.insert(25)
+    |> BST.insert(6)
+    |> BST.insert(1)
+    |> BST.insert(24)
+    |> BST.insert(23)
+    assert BST.max(tree) == 25
+  end
+
 end
