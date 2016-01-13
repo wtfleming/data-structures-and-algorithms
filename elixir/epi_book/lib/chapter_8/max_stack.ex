@@ -7,7 +7,7 @@ defmodule Chapter8.MaxStack do
   """
 
   @doc """
-  Construct a empty MaxStack
+  Construct an empty MaxStack
   """
   @spec new() :: Chapter8.MaxStack.t
   def new(), do: %Chapter8.MaxStack{}
