@@ -15,7 +15,6 @@ defmodule Chapter8.StackTest do
     stack = Chapter8.Stack.new
     |> Chapter8.Stack.push("a")
     assert Chapter8.Stack.peek(stack) == "a"
-
   end
 
   test "peek on an empty stack returns nil" do
