@@ -26,5 +26,29 @@ defmodule Chapter9.BinarySearchTree do
   def right(%BST{right: right}) do
     right
   end
+
+
+  @spec contains?(BST.t, number) :: boolean
+  def contains?(:empty_node, _), do: false
+  def contains?(%BST{value: value, left: left, right: right}, number) do
+    cond do
+      value == number -> true
+      number < value  -> contains?(left, number)
+      number > value  -> contains?(right, number)
+    end
+  end
+
+  @spec in_order_traversal(BST.t) :: [number]
+  def in_order_traversal(tree), do: _in_order_traversal(tree, [])
+
+  @spec _in_order_traversal(BST.t, [number]) :: [number]
+  defp _in_order_traversal(:empty_node, acc), do: []
+  defp _in_order_traversal(%BST{value: value, left: left, right: right}, acc) do
+    l = _in_order_traversal(left, acc)
+    r = _in_order_traversal(right, acc)
+    l ++ [value] ++ r
+  end
+
+
 end
 
