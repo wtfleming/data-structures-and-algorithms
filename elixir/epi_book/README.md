@@ -1,6 +1,6 @@
 # EpiBook
 
-Exercises from the book Elements of Programming Interviews
+Exercises from the book Elements of Programming Interviews implemented in Elixir.
 
 Run tests:
 
