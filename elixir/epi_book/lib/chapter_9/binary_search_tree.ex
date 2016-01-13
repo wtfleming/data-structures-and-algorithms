@@ -59,5 +59,28 @@ defmodule Chapter9.BinarySearchTree do
   def max(%BST{value: value, right: :empty_node}), do: value
   def max(%BST{right: right}), do: max(right)
 
+
+  @spec lowest_common_ancestor(BST.t, number, number) :: number
+  def lowest_common_ancestor(tree, a, b) when a < b, do: lca(tree, a, b)
+  def lowest_common_ancestor(tree, a, b) when a > b, do: lca(tree, b, a)
+
+
+  @spec lca(BST.t, number, number) :: number
+  defp lca(%BST{value: value}, smaller, larger) when smaller < value and larger > value do
+    value
+  end
+
+  defp lca(%BST{value: value, left: left}, smaller, larger) when smaller < value and larger < value do
+    lca(left, smaller, larger)
+  end
+
+  defp lca(%BST{value: value, right: right}, smaller, larger) when smaller > value and larger > value do
+    lca(right, smaller, larger)
+  end
+
+  defp lca(%BST{value: value}, smaller, larger) when smaller == value or larger == value do
+    value
+  end
+
 end
 
