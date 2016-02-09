@@ -3,7 +3,7 @@ defmodule Chapter9.BinarySearchTree do
   alias Chapter9.BinarySearchTree, as: BST
   @type t :: %BST{value: number, left: BST.t, right: BST.t} | :empty_node
 
-  
+
   @spec new() :: :empty_node
   def new(), do: :empty_node
 
