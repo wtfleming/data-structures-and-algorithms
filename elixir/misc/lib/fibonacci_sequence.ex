@@ -7,7 +7,7 @@ defmodule FibonacciSequence do
   def fib(x), do: _fib(0, 1, x)
 
   @spec _fib(non_neg_integer, pos_integer, non_neg_integer) :: non_neg_integer
-  defp _fib(x, y, 0), do: x
+  defp _fib(x, _, 0), do: x
   defp _fib(x, y, num), do: _fib(y, x + y, num - 1)
 
 end
