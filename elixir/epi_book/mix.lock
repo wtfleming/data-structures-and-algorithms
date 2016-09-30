@@ -1,1 +1,1 @@
-%{"dialyxir": {:hex, :dialyxir, "0.3.2"}}
+%{"dialyxir": {:hex, :dialyxir, "0.3.2", "7f4d264ba34603f44c68815f8a35e056df5669b3be456e1791567f11979af4e0", [:mix], []}}
