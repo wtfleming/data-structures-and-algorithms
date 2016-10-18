@@ -1,10 +1,13 @@
 'use strict';
 
+function reverse(arr) {
+  if (arr.length === 0) return arr;
+  return doReverse(arr);
+}
 
-function reverse([head, ...tail], acc = []) {
-  if (head === undefined) return acc;
+function doReverse([head, ...tail], acc = []) {
   if (tail.length === 0) return [head, ...acc];
-  return reverse(tail, [head, ...acc]);
+  return doReverse(tail, [head, ...acc]);
 }
 
 module.exports = {

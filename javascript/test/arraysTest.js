@@ -8,6 +8,7 @@ describe('Arrays', function() {
     it('should reverse arrays', function() {
       expect(arrays.reverse([1,2,3])).to.eql([3,2,1]);
       expect(arrays.reverse([])).to.eql([]);
+            expect(arrays.reverse([undefined,2,3])).to.eql([3,2,undefined]);
     });
   });
 });
