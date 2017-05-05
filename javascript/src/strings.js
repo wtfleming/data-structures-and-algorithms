@@ -31,7 +31,27 @@ function isPermutationWithMap(left, right) {
 }
 
 
+
+// Check if a string is a permutation of a palindrome
+function isPalindromePermutation(s) {
+  let letterFrequencies = letterCount(s);
+
+  // A string is a palindrome if there is an even number of all letters,
+  // except potentially one letter with an odd count
+  let numOddLetters = 0;
+  letterFrequencies.forEach((value, key) => {
+    if (key == ' ') return; // ignore spaces
+    if (value % 2 == 0) return;
+    numOddLetters++;
+  });
+
+  if (numOddLetters < 2) return true;
+
+  return false;
+}
+
 module.exports = {
   isPermutation: isPermutation,
-  isPermutationWithMap: isPermutationWithMap
+  isPermutationWithMap: isPermutationWithMap,
+  isPalindromePermutation: isPalindromePermutation
 };

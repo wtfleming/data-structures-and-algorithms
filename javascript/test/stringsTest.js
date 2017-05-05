@@ -23,4 +23,13 @@ describe('Strings', function() {
     });
   });
 
+
+  describe('isPalindromePermutation()', function() {
+    it('test if a string is a permutation of a palindrome', function() {
+      expect(strings.isPalindromePermutation("tact coa")).to.be.true; // 'taco cat', 'atco cta'
+      expect(strings.isPalindromePermutation("tact coaxyz")).to.be.false;
+    });
+  });
+
+
 });
