@@ -50,8 +50,65 @@ function isPalindromePermutation(s) {
   return false;
 }
 
+
+function isOneReplacementAway(left, right) {
+  let numReplacements = 0;
+
+  for (let i=0; i < left.length; i++) {
+    let l = left.charAt(i);
+    let r = right.charAt(i);
+    if (l != r) {
+      numReplacements++;
+    }
+
+    if (numReplacements > 1) return false;
+  }
+  return true;
+}
+
+function isOneInsertionOrRemovalAway(left, right) {
+  let shorter, longer;
+
+  if (left.length > right.length) {
+    shorter = right;
+    longer = left;
+  } else {
+    shorter = left;
+    longer = right;
+  }
+
+  let numChanges = 0;
+  let longerOffset = 0;
+
+  for (let i=0; i < shorter.length; i++) {
+    if (shorter.charAt(i) == longer.charAt(i + longerOffset)) continue;
+
+    numChanges++;
+    longerOffset++;
+
+    if (numChanges > 1) return false;
+  }
+
+
+  return true;
+}
+
+
+// 3 types of edits on strings, insert a character, remove a character, or replace a character
+// Determine if two strings ate one or zero edits from each other
+function isOneEditAway(left, right) {
+  if (left == right) return true;
+  if (Math.abs(left.length - right.length) > 1) return false; // we know there are at least 2 edits on this string
+  if (left.length == right.length) return isOneReplacementAway(left, right);
+
+
+
+  return isOneInsertionOrRemovalAway(left, right);
+}
+
 module.exports = {
   isPermutation: isPermutation,
   isPermutationWithMap: isPermutationWithMap,
-  isPalindromePermutation: isPalindromePermutation
+  isPalindromePermutation: isPalindromePermutation,
+  isOneEditAway: isOneEditAway
 };

@@ -32,4 +32,19 @@ describe('Strings', function() {
   });
 
 
+  describe('isOneEditAway()', function() {
+    it('test if a string is one or zero edits away from each other', function() {
+      expect(strings.isOneEditAway("pale", "pale")).to.be.true;
+      expect(strings.isOneEditAway("pale", "ple")).to.be.true;
+      expect(strings.isOneEditAway("ple", "pale")).to.be.true;
+      expect(strings.isOneEditAway("ple", "pall")).to.be.false;
+      expect(strings.isOneEditAway("pale", "pales")).to.be.true;
+      expect(strings.isOneEditAway("pale", "bale")).to.be.true;
+      expect(strings.isOneEditAway("pale", "bake")).to.be.false;
+      expect(strings.isOneEditAway("pale", "pa")).to.be.false;
+
+    });
+  });
+
+
 });
