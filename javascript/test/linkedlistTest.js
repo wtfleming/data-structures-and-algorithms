@@ -1,0 +1,21 @@
+'use strict';
+
+const expect = require('chai').expect;
+const LinkedList = require('../src/linkedlist').LinkedList;
+
+
+describe('LinkedLists', function() {
+  describe('nth()', function() {
+    it('should return the value at the nth position in a list', function() {
+
+      let list = new LinkedList();
+      list.addFront(111);
+      list.addFront(222);
+
+      expect(list.nth(0)).to.eql(222);
+      expect(list.nth(1)).to.eql(111);
+
+    });
+  });
+});
+
