@@ -55,5 +55,56 @@ describe('LinkedLists', function() {
     });
   });
 
+
+  describe('containsValue()', function() {
+    it('should return if a value is in a list', function() {
+      let list = new LinkedList();
+      list.addFront(111);
+      list.addFront(222);
+
+      expect(list.containsValue(111)).to.be.true;
+      expect(list.containsValue(222)).to.be.true;
+      expect(list.containsValue(333)).to.be.false;
+    });
+  });
+
+
+  describe('length()', function() {
+    it('should return the length of the list', function() {
+      let list = new LinkedList();
+      expect(list.length()).to.eql(0);
+      list.addFront(111);
+      expect(list.length()).to.eql(1);
+
+      list.addFront(222);
+      expect(list.length()).to.eql(2);
+
+      list.deleteNodeByValue(222);
+      expect(list.length()).to.eql(1);
+    });
+  });
+
+
+  describe('removeDuplicates()', function() {
+    it('should remove duplicates from an unsorted list', function() {
+      let list = new LinkedList();
+      list.addFront(111);
+      list.addFront(222);
+      list.addTail(333);
+      list.addFront(222);
+
+      expect(list.length()).to.eql(4);
+
+      list.removeDuplicates();
+      expect(list.length()).to.eql(3);
+      expect(list.containsValue(111)).to.be.true;
+      expect(list.containsValue(222)).to.be.true;
+      expect(list.containsValue(333)).to.be.true;
+    });
+  });
+
+
+
+
 });
 
