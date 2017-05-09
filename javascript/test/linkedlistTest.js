@@ -17,5 +17,20 @@ describe('LinkedLists', function() {
 
     });
   });
+
+
+  describe('addTail()', function() {
+    it('should add nodes to the end of a list', function() {
+      let list = new LinkedList();
+      list.addFront(111);
+      list.addFront(222);
+      list.addTail(333);
+
+      expect(list.nth(0)).to.eql(222);
+      expect(list.nth(1)).to.eql(111);
+      expect(list.nth(2)).to.eql(333);
+    });
+  });
+
 });
 
