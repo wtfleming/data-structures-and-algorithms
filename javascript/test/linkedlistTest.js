@@ -32,5 +32,22 @@ describe('LinkedLists', function() {
     });
   });
 
+  describe('deleteNodeByValue()', function() {
+    it('should add delete a node by value', function() {
+      let list = new LinkedList();
+      list.addFront(111);
+      list.addFront(222);
+      list.addFront(333);
+      expect(list.nth(0)).to.eql(333);
+      expect(list.nth(1)).to.eql(222);
+
+      list.deleteNodeByValue(222);
+
+      expect(list.nth(0)).to.eql(333);
+      expect(list.nth(1)).to.eql(111);
+
+    });
+  });
+
 });
 
