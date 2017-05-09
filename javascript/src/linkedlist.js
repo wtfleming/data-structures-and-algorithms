@@ -49,6 +49,11 @@ class LinkedList {
   deleteNodeByValue(val) {
     let node = this.head;
 
+    if (node != undefined && node.data == val) {
+      // Removing the head of the list
+      this.head = node.next;
+    }
+
     while (node != undefined) {
       if (node.next != undefined && node.next.data == val) {
         node.next = node.next.next;
