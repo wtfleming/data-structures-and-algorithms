@@ -1,9 +1,17 @@
 {
-  "name": "ts-examples",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "devDependencies": {
-    "typescript": "^3.4.2"
-  }
+    "name": "ts-examples",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/jest": "^24.0.11",
+        "jest": "^24.7.1",
+        "ts-jest": "^24.0.2",
+        "typescript": "^3.4.2"
+    },
+    "scripts": {
+        "build": "rm -rf dist/ && tsc",
+        "test": "jest",
+        "watch": "tsc --watch"
+    }
 }
