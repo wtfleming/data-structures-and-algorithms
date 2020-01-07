@@ -60,7 +60,7 @@ mod tests {
     #[test]
     fn a_vector_of_length_three_returns_none_if_not_present() {
         assert!(binary_search(vec![33, 44, 55], 12).is_none());
-        //assert!(binary_search(vec![1, 2, 3], 12).is_none());
+        assert!(binary_search(vec![1, 2, 3], 12).is_none());
     }
 
     #[test]
