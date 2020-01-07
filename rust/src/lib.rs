@@ -1,3 +1,5 @@
+pub mod binary_search;
+
 #[cfg(test)]
 mod tests {
     #[test]
