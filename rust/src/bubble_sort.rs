@@ -2,13 +2,15 @@ pub fn bubble_sort<T>(vector: &mut Vec<T>)
 where
     T: PartialOrd,
 {
-    if vector.len() < 2 {
+    // Empty vectors and those with length 1 are already sorted
+    if vector.len() <= 1 {
         return;
     }
 
+    let mut end_pos = vector.len() - 1;
     loop {
         let mut did_swap = false;
-        for idx in 0..vector.len() - 1 {
+        for idx in 0..end_pos {
             if idx < vector.len() && vector[idx] > vector[idx + 1] {
                 vector.swap(idx, idx + 1);
                 did_swap = true;
@@ -18,6 +20,7 @@ where
         if !did_swap {
             break;
         }
+        end_pos -= 1;
     }
 }
 
