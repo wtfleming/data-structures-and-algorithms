@@ -1,6 +1,6 @@
-pub fn bubble_sort<T>(vector: &mut Vec<T>)
+pub fn bubble_sort<T>(vector: &mut [T])
 where
-    T: PartialOrd,
+    T: Ord,
 {
     // Empty vectors and those with length 1 are already sorted
     if vector.len() <= 1 {
