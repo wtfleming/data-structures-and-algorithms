@@ -3,50 +3,45 @@ data-structures-and-algorithms-cpp
 
 Data structures and algorithms in C++ for learning.
 
-This code should not be used in a production, for simplicity I am not using templates for the data structures, and there is a relatively large amount of undefined behavior (ie. removing an element from an empty list).
-
 ## Install Dependencies
-
-Instructions tested on Ubuntu 14.04
 
 Requires cmake and a compiler
 
 ```
-sudo apt-get install cmake build-essential
+brew install cmake
 ```
 
-Uses Google Mock and Google Test
-https://code.google.com/p/googlemock/
+Uses Google Test
+https://github.com/google/googletest
 
-Requires gcc 4.7 or above (note that if you are using ubuntu 12.04 the version in the repositories is from the 4.6 branch, you will need a newer version).
-
-Download Google Mock from the above link
+Download Google Test from the above link
 
 Add an environment variable to where it is installed, I used
 
 ```
-export GMOCK_HOME=$HOME/bin/gmock-1.7.0
+export GTEST_HOME=$HOME/bin/googletest-release-1.10.0
 ```
 
 Build Google Mock
 The mybuild directory is arbitrary, but the build scripts used in this repo assume that name. If you wish to change it, you will also need to change all the CMakeLists.txt files
 
-```
-cd $GMOCK_HOME
-mkdir mybuild
-cd mybuild
-cmake ...
-make
-```
 
 Build Google Test
 
 ```
-cd cd $GMOCK_HOME/gtest
+cd $GTEST_HOME
 mkdir mybuild
 cd mybuild
-cmake ..
+cmake -DCMAKE_CXX_FLAGS=-std=c++11 ..
 make
+
+# On MacOS do this:
+cp -a ../googletest/include/ /usr/local/include
+cp -a ../googlemock/include/ /usr/local/include
+find . -name "*.a" -exec cp -a {} /usr/local/lib \;
+
+export CPLUS_INCLUDE_PATH=/usr/local/include
+export LIBRARY_PATH=/usr/local/lib
 ```
 
 ## Build the project
