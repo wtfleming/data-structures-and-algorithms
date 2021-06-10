@@ -22,3 +22,21 @@
     (testing "Find the number of elements of an empty list."
     (is (= (my-count '()) 0))))
 
+(deftest my-reverse-test
+  (testing "Reverses a list."
+    (is (= '(:d :c :b :a) (my-reverse '(:a :b :c :d))))))
+
+(deftest is-palindrome-test
+  (testing "Returns true if list is a palindrome."
+    (is (= true (is-palindrome '(:x :a :m :a :x))))
+  (testing "Returns false if list is not a palindrome."
+    (is (= false (is-palindrome '(:x :a :m :a)))))))
+
+(deftest my-flatten-test
+  (testing "Flattens a list."
+    (is (= '(:a :b :c :d :e) (my-flatten '(:a (:b (:c :d) :e)))))))
+
+(deftest my-flatten-2-test
+  (testing "Flattens a list."
+    (is (= '(:a :b :c :d :e) (my-flatten-2 '(:a (:b (:c :d) :e)))))))
+

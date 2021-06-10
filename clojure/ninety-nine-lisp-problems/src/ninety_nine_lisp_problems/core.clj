@@ -37,3 +37,39 @@
         (recur (rest coll) (inc acc))
         acc))))
 
+(defn my-reverse
+  "Reverse a list"
+  [coll]
+  (reduce conj '() coll))
+
+(defn is-palindrome
+  "Returns true if list is a palindrome, false otherwise"
+  [coll]
+  (= coll (reverse coll)))
+
+
+;; Much more complicated compared to looking at (source flatten)
+;; but this does work
+(defn do-flatten
+  "Transform a list, possibly holding lists as elements into a reversed `flat' list"
+  [coll]
+  (loop [coll coll
+         acc '()]
+    (if (empty? coll)
+      acc
+      (if (list? (first coll))
+        (recur (rest coll) (concat (do-flatten (first coll)) acc))
+        (recur (rest coll) (cons (first coll) acc))))))
+
+(defn my-flatten
+  "Transform a list, possibly holding lists as elements into a `flat' list"
+  [coll]
+  (reverse (do-flatten coll)))
+
+
+(defn my-flatten-2
+  "Transform a list, possibly holding lists as elements into a `flat' list"
+  [coll]
+  (if (list? coll)
+    (mapcat my-flatten-2 coll)
+    (list coll)))
