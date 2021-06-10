@@ -40,3 +40,9 @@
   (testing "Flattens a list."
     (is (= '(:a :b :c :d :e) (my-flatten-2 '(:a (:b (:c :d) :e)))))))
 
+(deftest compress-test
+  (testing "Compresses a list."
+    (is (= '(:a :b :c :a :d :e) (compress '(:a :a :a :a :b :c :c :a :a :d :e :e :e :e)))))
+  (testing "Compresses an empty list."
+    (is (= '() (compress '())))))
+
