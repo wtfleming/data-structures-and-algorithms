@@ -19,7 +19,7 @@
 (deftest my-count-test
   (testing "Find the number of elements of a list."
     (is (= (my-count '(:a :b :c :d)) 4)))
-    (testing "Find the number of elements of an empty list."
+  (testing "Find the number of elements of an empty list."
     (is (= (my-count '()) 0))))
 
 (deftest my-reverse-test
@@ -29,8 +29,8 @@
 (deftest is-palindrome-test
   (testing "Returns true if list is a palindrome."
     (is (= true (is-palindrome '(:x :a :m :a :x))))
-  (testing "Returns false if list is not a palindrome."
-    (is (= false (is-palindrome '(:x :a :m :a)))))))
+    (testing "Returns false if list is not a palindrome."
+      (is (= false (is-palindrome '(:x :a :m :a)))))))
 
 (deftest my-flatten-test
   (testing "Flattens a list."

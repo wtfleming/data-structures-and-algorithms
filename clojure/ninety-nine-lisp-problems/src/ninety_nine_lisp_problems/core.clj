@@ -12,9 +12,9 @@
   "Find the last two boxes of a list"
   [coll]
   (->> coll
-      reverse
-      (take 2)
-      reverse))
+       reverse
+       (take 2)
+       reverse))
 
 (defn element-at
   "Find the K'th element of a list.
@@ -50,6 +50,8 @@
 
 ;; Much more complicated compared to looking at (source flatten)
 ;; but this does work
+
+
 (defn do-flatten
   "Transform a list, possibly holding lists as elements into a reversed `flat' list"
   [coll]
@@ -65,7 +67,6 @@
   "Transform a list, possibly holding lists as elements into a `flat' list"
   [coll]
   (reverse (do-flatten coll)))
-
 
 (defn my-flatten-2
   "Transform a list, possibly holding lists as elements into a `flat' list"
@@ -97,5 +98,4 @@
       (empty? coll) (conj acc sublist)
       (empty? sublist) (recur (rest coll) (conj sublist (first coll)) acc)
       (= (first sublist) (first coll)) (recur (rest coll) (conj sublist (first coll)) acc)
-      :else (recur (rest coll) (list (first coll)) (conj acc sublist))
-  )))
+      :else (recur (rest coll) (list (first coll)) (conj acc sublist)))))
