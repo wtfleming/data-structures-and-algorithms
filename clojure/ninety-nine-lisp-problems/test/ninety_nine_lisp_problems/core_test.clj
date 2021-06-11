@@ -46,3 +46,7 @@
   (testing "Compresses an empty list."
     (is (= '() (compress '())))))
 
+(deftest encode-test
+  (testing "If a list contains repeated elements they should be placed in separate sublists."
+    (is (= '((:a :a :a :a) (:b) (:c :c) (:a :a) (:d) (:e :e :e :e)) (encode '(:a :a :a :a :b :c :c :a :a :d :e :e :e :e))))))
+
