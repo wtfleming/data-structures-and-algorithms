@@ -46,7 +46,10 @@
   (testing "Compresses an empty list."
     (is (= '() (compress '())))))
 
-(deftest encode-test
+(deftest pack-test
   (testing "If a list contains repeated elements they should be placed in separate sublists."
-    (is (= '((:a :a :a :a) (:b) (:c :c) (:a :a) (:d) (:e :e :e :e)) (encode '(:a :a :a :a :b :c :c :a :a :d :e :e :e :e))))))
+    (is (= '((:a :a :a :a) (:b) (:c :c) (:a :a) (:d) (:e :e :e :e)) (pack '(:a :a :a :a :b :c :c :a :a :d :e :e :e :e))))))
 
+(deftest encode-test
+  (testing "Run-length encoding of a list."
+    (is (= '((4 :a) (1 :b) (2 :c) (2 :a) (1 :d) (4 :e)) (encode '(:a :a :a :a :b :c :c :a :a :d :e :e :e :e))))))

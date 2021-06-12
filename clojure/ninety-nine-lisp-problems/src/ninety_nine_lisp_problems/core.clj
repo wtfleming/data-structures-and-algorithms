@@ -88,7 +88,7 @@
         (= (first coll) current) (recur (rest coll) current acc)
         :else (recur (rest coll) (first coll) (conj acc (first coll)))))))
 
-(defn encode
+(defn pack
   "Pack consecutive duplicates of list elements into sublists."
   [coll]
   (loop [coll coll
@@ -99,3 +99,10 @@
       (empty? sublist) (recur (rest coll) (conj sublist (first coll)) acc)
       (= (first sublist) (first coll)) (recur (rest coll) (conj sublist (first coll)) acc)
       :else (recur (rest coll) (list (first coll)) (conj acc sublist)))))
+
+(defn encode
+  "Run-length encoding of a list"
+  [coll]
+  (->> coll
+      pack
+      (map #(list (count %) (first %)))))
