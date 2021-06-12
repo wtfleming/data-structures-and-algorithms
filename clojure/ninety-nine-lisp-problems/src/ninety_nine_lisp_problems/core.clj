@@ -88,17 +88,22 @@
         (= (first coll) current) (recur (rest coll) current acc)
         :else (recur (rest coll) (first coll) (conj acc (first coll)))))))
 
+;; (defn pack
+;;   "Pack consecutive duplicates of list elements into sublists."
+;;   [coll]
+;;   (loop [coll coll
+;;          sublist '()
+;;          acc []]
+;;     (cond
+;;       (empty? coll) (conj acc sublist)
+;;       (empty? sublist) (recur (rest coll) (conj sublist (first coll)) acc)
+;;       (= (first sublist) (first coll)) (recur (rest coll) (conj sublist (first coll)) acc)
+;;       :else (recur (rest coll) (list (first coll)) (conj acc sublist)))))
+
 (defn pack
   "Pack consecutive duplicates of list elements into sublists."
   [coll]
-  (loop [coll coll
-         sublist '()
-         acc []]
-    (cond
-      (empty? coll) (conj acc sublist)
-      (empty? sublist) (recur (rest coll) (conj sublist (first coll)) acc)
-      (= (first sublist) (first coll)) (recur (rest coll) (conj sublist (first coll)) acc)
-      :else (recur (rest coll) (list (first coll)) (conj acc sublist)))))
+  (partition-by identity coll))
 
 (defn encode
   "Run-length encoding of a list"
