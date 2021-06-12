@@ -75,18 +75,26 @@
     (mapcat my-flatten-2 coll)
     (list coll)))
 
+;; (defn compress
+;;   "If a list contains repeated elements they should be replaced with a single copy of the element. The order of the elements should not be changed."
+;;   [coll]
+;;   (if (empty? coll)
+;;     coll
+;;     (loop [coll coll
+;;            current (first coll)
+;;            acc [(first coll)]]
+;;       (cond
+;;         (empty? coll) acc
+;;         (= (first coll) current) (recur (rest coll) current acc)
+;;         :else (recur (rest coll) (first coll) (conj acc (first coll)))))))
+
 (defn compress
   "If a list contains repeated elements they should be replaced with a single copy of the element. The order of the elements should not be changed."
   [coll]
-  (if (empty? coll)
-    coll
-    (loop [coll coll
-           current (first coll)
-           acc [(first coll)]]
-      (cond
-        (empty? coll) acc
-        (= (first coll) current) (recur (rest coll) current acc)
-        :else (recur (rest coll) (first coll) (conj acc (first coll)))))))
+  (->> coll
+       (partition-by identity)
+       (map first)))
+
 
 ;; (defn pack
 ;;   "Pack consecutive duplicates of list elements into sublists."
