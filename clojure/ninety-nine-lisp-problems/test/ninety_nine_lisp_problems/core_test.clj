@@ -53,3 +53,37 @@
 (deftest encode-test
   (testing "Run-length encoding of a list."
     (is (= '((4 :a) (1 :b) (2 :c) (2 :a) (1 :d) (4 :e)) (encode '(:a :a :a :a :b :c :c :a :a :d :e :e :e :e))))))
+
+(deftest encode-modified-test
+  (testing "Only elements with duplicates are transferred as (N E) lists."
+    (is (= '((4 :a) :b (2 :c) (2 :a) :d (4 :e)) (encode-modified '(:a :a :a :a :b :c :c :a :a :d :e :e :e :e))))))
+
+(deftest dencode-modified-test
+  (testing "Only elements with duplicates are transferred as (N E) lists."
+    (is (= '(:a :a :a :a :b :c :c :a :a :d :e :e :e :e) (decode-modified '((4 :a) :b (2 :c) (2 :a) :d (4 :e)))))))
+
+(deftest dupli-test
+  (testing "Duplicate the elements of a list."
+    (is (= '(:a :a :b :b :c :c :c :c :d :d) (dupli '(:a :b :c :c :d))))))
+
+(deftest repli-test
+  (testing "Replicate the elements of a list a given number of times."
+    (is (= '(:a :a :a :b :b :b :c :c :c) (repli '(:a :b :c) 3)))))
+
+(deftest my-drop-test
+  (testing "Drop every N'th element from a list"
+    (is (= '(:a :b :d :e :g :h :k) (my-drop '(:a :b :c :d :e :f :g :h :i :k) 3)))))
+
+(deftest my-split-test
+  (testing "Split a list into two parts"
+    (is (= '((:a :b :c) (:d :e :f :g :h :i :k)) (my-split '(:a :b :c :d :e :f :g :h :i :k) 3)))))
+
+(deftest slice-test
+  (testing "Extract a slice from a list"
+    (is (= '(:c :d :e :f :g) (slice '(:a :b :c :d :e :f :g :h :i :k) 3 7)))))
+
+(deftest rotest-test
+  (testing "Rotate a list N places to the left"
+    (is (= '(:d :e :f :g :h :a :b :c) (rotate '(:a :b :c :d :e :f :g :h) 3))))
+  (testing "Rotate a list N places to the left with a negative N"
+    (is (= '(:g :h :a :b :c :d :e :f) (rotate '(:a :b :c :d :e :f :g :h) -2)))))
