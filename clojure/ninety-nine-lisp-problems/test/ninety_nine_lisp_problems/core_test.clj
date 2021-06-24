@@ -87,3 +87,11 @@
     (is (= '(:d :e :f :g :h :a :b :c) (rotate '(:a :b :c :d :e :f :g :h) 3))))
   (testing "Rotate a list N places to the left with a negative N"
     (is (= '(:g :h :a :b :c :d :e :f) (rotate '(:a :b :c :d :e :f :g :h) -2)))))
+
+(deftest remove-at-test
+  (testing "Removes the K'th element from a list"
+    (is (= '(:a :c :d) (remove-at '(:a :b :c :d) 2)))))
+
+(deftest insert-at-test
+  (testing "Insert an element at a given position into a list"
+    (is (= '(:a :alfa :b :c :d) (insert-at :alfa '(:a :b :c :d) 2)))))

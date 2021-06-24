@@ -163,3 +163,24 @@
     (> x 0) (let [[a b] (my-split coll x)]
               (concat b a))
     :else (rotate coll (+ (count coll) x))))
+
+(defn remove-at
+  "Removes the K'th element from a list"
+  [coll k]
+  (loop [coll coll
+         pos 1
+         acc []]
+    (if (= k pos)
+      (concat acc (rest coll))
+      (recur (rest coll) (inc pos) (conj acc (first coll))))))
+
+;; (defn remove-at
+;;   "Removes the K'th element from a list"
+;;   [coll k]
+;;   (concat (take (dec k) coll) (drop k coll)))
+
+(defn insert-at
+  "Insert an element at a given position into a list"
+  [x coll pos]
+  (let [[left right] (split-at (dec pos) coll)]
+    (concat left (cons x right))))
