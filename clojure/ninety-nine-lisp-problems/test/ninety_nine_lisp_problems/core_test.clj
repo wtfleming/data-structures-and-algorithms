@@ -95,3 +95,7 @@
 (deftest insert-at-test
   (testing "Insert an element at a given position into a list"
     (is (= '(:a :alfa :b :c :d) (insert-at :alfa '(:a :b :c :d) 2)))))
+
+(deftest my-range-test
+  (testing "Create a list containing all integers within a given range"
+    (is (= '(4 5 6 7 8 9) (my-range 4 9)))))

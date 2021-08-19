@@ -184,3 +184,14 @@
   [x coll pos]
   (let [[left right] (split-at (dec pos) coll)]
     (concat left (cons x right))))
+
+(defn my-range
+  "Create a list containing all integers within a given range.
+   If first argument is smaller than second, produce a list in decreasing order."
+  [start end]
+  (loop [current start
+         acc []]
+    (if (> current end)
+      acc
+      (recur (inc current) (conj acc current)))))
+
